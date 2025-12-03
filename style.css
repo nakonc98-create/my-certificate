@@ -1,0 +1,141 @@
+/* 1. การตั้งค่าพื้นฐาน */
+        body {
+            font-family: 'Sarabun', sans-serif; /* แนะนำให้ใช้ Google Fonts ภาษาไทย */
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        header h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+
+        /* 2. การจัดวาง Grid (Responsive) */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* 3. การ์ดสำหรับใบประกาศ */
+        .cert-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .cert-image-container {
+            height: 220px;
+            overflow: hidden;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cert-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* ตัดภาพให้พอดีกรอบโดยไม่เสียสัดส่วน */
+            transition: transform 0.5s ease;
+        }
+
+        .cert-card:hover .cert-image-container img {
+            transform: scale(1.05); /* ซูมภาพนิดหน่อยเมื่อเอาเมาส์ชี้ */
+        }
+
+        .cert-info {
+            padding: 20px;
+        }
+
+        .cert-info h3 {
+            margin: 0 0 10px;
+            font-size: 1.2rem;
+            color: #34495e;
+        }
+
+        .cert-info p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+
+        /* 4. Modal (หน้าต่างขยายภาพ) */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1000; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            background-color: rgba(0,0,0,0.9); 
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 80vh;
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(255,255,255,0.2);
+            animation: zoomIn 0.3s;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .close:hover {
+            color: #bbb;
+        }
+
+        #caption {
+            margin-top: 15px;
+            color: #ccc;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        @keyframes zoomIn {
+            from {transform: scale(0.8); opacity: 0;}
+            to {transform: scale(1); opacity: 1;}
+        }
+
+        /* Media Query สำหรับมือถือ */
+        @media (max-width: 600px) {
+            header h1 { font-size: 2rem; }
+            .gallery-grid { grid-template-columns: 1fr; }
+        }
